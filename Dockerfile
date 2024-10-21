@@ -2,7 +2,7 @@
 FROM python:3.9.0
 
 # Set the working directory inside the container
-WORKDIR /payment
+WORKDIR /app
 
 # Copy the requirements file into the container
 COPY requirements.txt .
@@ -10,11 +10,8 @@ COPY requirements.txt .
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project into the container
+# Copy the rest of the project files into the container
 COPY . .
-
-# Set environment variables
-COPY .env .env
 
 # Expose the port the app runs on
 EXPOSE 8000

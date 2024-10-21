@@ -5,11 +5,13 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      POSTGRES_DB: Payment
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: shahzod0604
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   web:
     build: .
@@ -22,3 +24,6 @@ services:
       - db
     env_file:
       - .env
+
+volumes:
+  postgres_data:
