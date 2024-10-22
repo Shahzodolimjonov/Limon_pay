@@ -59,7 +59,7 @@ class CardTransaction(graphene.Mutation):
         try:
             card_instance = Card.objects.get(id=card, user=user)
         except Card.DoesNotExist:
-            raise Exception("Source card not found or does not belong to the user")
+            raise Exception("The card was not found or does not belong to the user")
 
         try:
             to_card = Card.objects.get(card_number=card_number)
